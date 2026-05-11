@@ -1,8 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-bg: #f5f2ee;          /* warm off-white base */
+  --color-surface: #ede8e0;     /* cards, panels */
+  --color-text-primary: #2d2d2d;
+  --color-text-muted: #6b6560;
+  --color-green: #7a9e7e;       /* dusty sage */
+  --color-green-dark: #4f7152;
+  --color-lilac: #b8a9c9;       /* soft lilac */
+  --color-lilac-dark: #8a7aaa;
+  --color-accent: #c9b8d9;      /* hover states, highlights */
 }
 
 @theme inline {
@@ -12,7 +19,20 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.nav-color {
+  background-color: var(--color-lilac);
+}
+
+.page-wrapper {
+  animation: fadeIn 1s ease-out both;
+}
+
+@media (prefers-color-scheme: light) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
