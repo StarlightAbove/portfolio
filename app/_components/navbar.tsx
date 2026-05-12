@@ -42,7 +42,6 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className="py-8 px-12 flex justify-between items-center ">
-        <TypedLogo />
      <ul className="flex relative justify-end items-center gap-6">
         {navItems.map((eachItem) => (
           <li key={eachItem.path}>
@@ -59,7 +58,7 @@ const Navbar: React.FC = () => {
               {eachItem.path === hoveredPath && (
                 <motion.div
                   layoutId="navbar"
-                  className="absolute z-0 inset-0 bg-[var(--color-accent)] rounded-full"
+                  className="absolute z-0 inset-0 bg-[var(--color-text-muted)] rounded-full"
                   transition={{
                     type: "spring",
                     bounce: 0.05,

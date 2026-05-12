@@ -14,7 +14,7 @@ export default function TypedLogo() {
 
   useEffect(() => {
     const typed = new Typed(el.current, {
-      strings: ['Eliza Kishan'], // Text to type
+      strings: ['Hi, my name is Eliza Kishan.'], // Text to type
       typeSpeed: 200,
       backSpeed: 50,
       loop: false,
