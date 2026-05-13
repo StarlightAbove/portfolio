@@ -14,8 +14,13 @@ const navItems = [
     icon: <Home />,
   },
   {
-    path: "/about",
-    name: "About",
+    path: "/cv",
+    name: "CV",
+    icon: <FileUser />
+  },
+  {
+    path: "/project",
+    name: "Projects",
     icon: <BookOpen />
   },
   {
@@ -24,14 +29,9 @@ const navItems = [
     icon: <Sparkle />
   },
   {
-    path: "/the-fun-stuff",
+    path: "/blep",
     name: "Bits and Bobs",
     icon: <Shuffle />
-  },
-  {
-    path: "/cv",
-    name: "CV",
-    icon: <FileUser />
   },
 ];
 
@@ -41,7 +41,7 @@ const Navbar: React.FC = () => {
   const [hoveredPath, setHoveredPath] = useState(pathname);
 
   return (
-    <nav className="py-8 px-12 flex justify-between items-center ">
+    <nav className="pt-8 px-12 flex justify-between items-center">
      <ul className="flex relative justify-end items-center gap-6">
         {navItems.map((eachItem) => (
           <li key={eachItem.path}>
@@ -58,7 +58,7 @@ const Navbar: React.FC = () => {
               {eachItem.path === hoveredPath && (
                 <motion.div
                   layoutId="navbar"
-                  className="absolute z-0 inset-0 bg-[var(--color-text-muted)] rounded-full"
+                  className="absolute z-0 inset-0 bg-[var(--color-green)] rounded-full"
                   transition={{
                     type: "spring",
                     bounce: 0.05,

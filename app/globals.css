@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  --color-bg: #f5f2ee;          /* warm off-white base */
+  --color-bg: #f3ebf4;          /* warm off-white base */
   --color-surface: #ede8e0;     /* cards, panels */
   --color-text-primary: #2d2d2d;
-  --color-text-muted: #f7e4d1;
+  --color-text-muted: #565d65;
   --color-green: #7a9e7e;       /* dusty sage */
   --color-green-dark: #4f7152;
   --color-lilac: #b8a9c9;       /* soft lilac */
@@ -34,13 +34,13 @@
 
 @media (prefers-color-scheme: light) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #e7d5c5 !important; 
+    --foreground: #0a0a0a;
   }
 }
 
-body {
-  background: var(--background);
+html, body {
+  background: var(--color-bg);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
