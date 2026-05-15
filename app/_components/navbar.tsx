@@ -2,7 +2,6 @@
 
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import  TypedLogo from "@/app/_components/logo"
 import { Home, BookOpen, Sparkle, Shuffle, FileUser } from 'lucide-react';
 import { motion } from "framer-motion";
 import { useState } from "react";
@@ -37,8 +36,15 @@ const navItems = [
 
 const Navbar: React.FC = () => {
   const pathname = usePathname();
-  const isActive = (path: string) => pathname === path;
-  const [hoveredPath, setHoveredPath] = useState(pathname);
+  const isActive = (path: string) => {
+    if (path === "/") return pathname === "/";
+    return pathname.startsWith(path);
+  };
+  const activeItem = navItems.find((item) =>
+    item.path === "/" ? pathname === "/" : pathname.startsWith(item.path)
+    )?.path ?? pathname;
+
+  const [hoveredPath, setHoveredPath] = useState(activeItem);
 
   return (
     <nav className="pt-8 px-12 flex justify-between items-center">
@@ -52,7 +58,7 @@ const Navbar: React.FC = () => {
                 isActive(eachItem.path) ? "text-black-100" : "text-zinc-400"
               }`}
               onMouseOver={() => setHoveredPath(eachItem.path)}
-              onMouseLeave={() => setHoveredPath(pathname)}
+              onMouseLeave={() => setHoveredPath(activeItem)}
             >
               <span className = "relative z-10">{eachItem.icon}</span>
               {eachItem.path === hoveredPath && (

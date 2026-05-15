@@ -1,7 +1,7 @@
 ---
 title: "My Post Title"
 date: "2026-05-15"
-tags: ["misc"]
+tags: ["misc", "project"]
 excerpt: "A short description."
 ---
 

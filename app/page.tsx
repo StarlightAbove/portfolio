@@ -1,7 +1,9 @@
 import Image from "next/image";
 import "@/app/globals.css";
 import TypedLogo from "@/app/_components/logo"
+import LatestPosts from "./_components/LatestPosts";
 import CurrentlyListening from "./_components/CurrentlyListening";
+import LatestProjects from "./_components/LatestProjects";
 
 export default function Home() {
   return (
@@ -23,12 +25,12 @@ export default function Home() {
         <h2 className="max-w-s text-2xl leading-10 tracking-tight text-black mt-5">
             Featured Projects
         </h2>
-        <p> 3 featured projects go here. </p>
+        <LatestProjects />
         
         <h2 className="max-w-s text-2xl leading-10 tracking-tight text-black mt-5">
             My Synapses Say
         </h2>
-        <p> 3 new blog posts go here. </p>
+        <LatestPosts />
 
         <h2 className="max-w-s text-2xl leading-10 tracking-tight text-black mt-5">
             Currently listening to...
