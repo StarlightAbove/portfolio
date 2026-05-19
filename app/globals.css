@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 :root {
   --color-bg: #f3ebf4;          /* warm off-white base */
@@ -6,7 +7,7 @@
   --color-text-primary: #2d2d2d;
   --color-text-muted: #565d65;
   --color-green: #7a9e7e;       /* dusty sage */
-  --color-green-dark: #4f7152;
+  --color-green-dark: #3c513e;
   --color-lilac: #b8a9c9;       /* soft lilac */
   --color-lilac-dark: #8a7aaa;
   --color-accent: #c9b8d9;      /* hover states, highlights */

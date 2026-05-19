@@ -1,13 +1,24 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import { remark } from 'remark';
-import html from 'remark-html';
+import { unified } from 'unified';
+import remarkParse from 'remark-parse';
+import remarkGfm from 'remark-gfm';
+import remarkRehype from 'remark-rehype';
+import rehypeRaw from 'rehype-raw';
+import rehypeStringify from 'rehype-stringify';
 import { Post, PostMeta } from '@/interfaces/blog';
 
 const postsRoot = path.join(process.cwd(), 'posts');
 console.log('postsRoot:', postsRoot);
 console.log('contents:', fs.readdirSync(postsRoot));
+
+const processor = unified()
+  .use(remarkParse)        // parse markdown AST
+  .use(remarkGfm)          // tables, strikethrough, task lists, autolinks
+  .use(remarkRehype, { allowDangerousHtml: true }) // convert to HTML AST
+  .use(rehypeRaw)          // handle raw HTML blocks in markdown
+  .use(rehypeStringify);   // serialize to HTML string
 
 function readPost(dir: string, file: string, category: string): PostMeta {
   const slug = file.replace(/\.md$/, '');
@@ -35,12 +46,10 @@ export function getAllPosts(): PostMeta[] {
     const entryPath = path.join(postsRoot, entry);
 
     if (fs.statSync(entryPath).isDirectory()) {
-      // nested: posts/category/slug.md
       return fs.readdirSync(entryPath)
         .filter((file) => file.endsWith('.md'))
         .map((file) => readPost(entryPath, file, entry));
     } else if (entry.endsWith('.md')) {
-      // flat: posts/slug.md — category defaults to "uncategorized"
       return [readPost(postsRoot, entry, 'uncategorized')];
     }
     return [];
@@ -56,7 +65,7 @@ export async function getPost(category: string, slug: string): Promise<Post> {
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const { data, content } = matter(fileContents);
 
-  const processed = await remark().use(html).process(content);
+  const processed = await processor.process(content);
 
   return {
     slug,

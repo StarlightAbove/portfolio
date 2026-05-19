@@ -28,7 +28,7 @@ export function getProjects(): Project[] {
       projects.push({
         slug: path.basename(file, path.extname(file)),
         category,
-        projTitle: data.projTitle ?? slug,
+        projTitle: data.title ?? slug,
         description: data.description ?? '',
         date: data.date ? String(data.date) : null,
       });

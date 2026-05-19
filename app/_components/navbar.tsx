@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { Home, BookOpen, Sparkle, Shuffle, FileUser } from 'lucide-react';
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const navItems = [
   {
@@ -45,7 +45,10 @@ const Navbar: React.FC = () => {
     )?.path ?? pathname;
 
   const [hoveredPath, setHoveredPath] = useState(activeItem);
-
+  useEffect(() => {
+      setHoveredPath(activeItem);
+  }, [pathname]);
+  
   return (
     <nav className="pt-8 px-12 flex justify-between items-center">
      <ul className="flex relative justify-end items-center gap-6">
