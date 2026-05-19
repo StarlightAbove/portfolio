@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import Navbar from "./_components/navbar";
 import "./globals.css";
 import PageTransition from "./_components/PageTransition";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,7 +35,8 @@ export default function RootLayout({
           <main className="mx-auto px-4 py-10 flex items-center">
             <PageTransition>
               {children}
-            </PageTransition>     
+            </PageTransition>  
+            <SpeedInsights />   
           </main>
         
       </body>
