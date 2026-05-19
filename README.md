@@ -1,1 +1,3 @@
-This is a project that I am working on to create a portfolio website for myself.
+[Personal Website](elizakishan.com)
+
+See it if you'd like!
